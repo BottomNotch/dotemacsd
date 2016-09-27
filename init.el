@@ -1,27 +1,6 @@
 ;;activate all the packages (in particular autoloads)
 (package-initialize)
 
-;;don't use tab characters, they're evil and will murder your dog
-(setq-default indent-tabs-mode nil)
-
-;;my prefered indent length
-(setq c-basic-offset 4)
-
-;;show line numbers
-(global-linum-mode 1)
-
-;;my prefered coding style
-(setq c-default-style '((java-mode . "bsd")
-                        (other . "bsd")))
-
-;; show column number
-(setq column-number-mode t)
-
-;;crap, I can't even remember what this does, I'll just leave it I guess...
-(defun my-make-CR-do-indent ()
-  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-(add-hook 'c-initialization-hook 'my-make-CR-do-indent)
-
 ; list wanted packages
 (setq package-list '(evil-nerd-commenter
                      ))
@@ -52,8 +31,46 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+
+;;don't use tab characters, they're evil and will murder your dog
+(setq-default indent-tabs-mode nil)
+
+;;my prefered indent length
+(setq c-basic-offset 4)
+
+;;show line numbers
+(global-linum-mode 1)
+
+;;my prefered coding style
+(setq c-default-style '((java-mode . "bsd")
+                        (other . "bsd")))
+
+;; show column n
+;;don't use tab characters, they're evil and will murder your dog
+(setq-default indent-tabs-mode nil)
+
+;;my prefered indent length
+(setq c-basic-offset 4)
+
+;;show line numbers
+(global-linum-mode 1)
+
+;;my prefered coding style
+(setq c-default-style '((java-mode . "bsd")
+                        (other . "bsd")))
+
+;; show column number
+(setq column-number-mode t)
+
+;;crap, I can't even remember what this does, I'll just leave it I guess...
+(defun my-make-CR-do-indent ()
+  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
+(add-hook 'c-initialization-hook 'my-make-CR-do-indent)
+
+;;better commenting
 (evilnc-default-hotkeys)
 
+;; use "//" instead of "/**/"
 (add-hook 'c-mode-common-hook
   (lambda ()
     ;; Preferred comment style
