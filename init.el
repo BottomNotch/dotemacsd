@@ -22,14 +22,6 @@
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
-(evilnc-default-hotkeys)
-
-(add-hook 'c-mode-common-hook
-  (lambda ()
-    ;; Preferred comment style
-    (setq comment-start "// "
-          comment-end "")))
-
 ; list wanted packages
 (setq package-list '(evil-nerd-commenter
                      ))
@@ -59,3 +51,11 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+(evilnc-default-hotkeys)
+
+(add-hook 'c-mode-common-hook
+  (lambda ()
+    ;; Preferred comment style
+    (setq comment-start "// "
+          comment-end "")))
