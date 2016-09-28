@@ -76,3 +76,9 @@
     ;; Preferred comment style
     (setq comment-start "// "
           comment-end "")))
+
+;;make it obvious when there's more than 80 character on one line.
+;;if you exceed 80 characters and don't fix it, you're an evil person.
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
