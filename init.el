@@ -3,6 +3,10 @@
 
 ; list wanted packages
 (setq package-list '(evil-nerd-commenter
+                     avk-emacs-themes
+                     tabbar
+                     sublimity
+                     workgroups2
                      ))
 
 (custom-set-variables
@@ -10,11 +14,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (avk-darkblue-white)))
+ '(custom-safe-themes
+   (quote
+    ("e5c6caa4860b1ba51dc5ad335c0c2734ea650a6098dd9652a1ab3d9aa702e185" default)))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/"))))
- '(package-selected-packages (quote (evil-nerd-commenter auto-overlayscomplete dash))))
+ '(package-selected-packages
+   (quote
+    (workgroups2
+     sublimity tabbar
+     avk-emacs-themes
+     evil-nerd-commenter
+     auto-overlayscomplete
+     dash
+     ))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,15 +38,19 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;fetch the list of packages available 
-(unless package-archive-contents
-  (package-refresh-contents))
+;;fetch the list of packages available
+(package-refresh-contents)
 
 ;;install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map)
+;;(require 'sublimity-attractive)
+(sublimity-mode 1)
 
 ;;don't use tab characters, they're evil and will murder your dog
 (setq-default indent-tabs-mode nil)
@@ -41,6 +61,7 @@
 ;;show line numbers
 (global-linum-mode 1)
 
+(tabbar-mode 1)
 ;;my prefered coding style
 (setq c-default-style '((java-mode . "bsd")
                         (other . "bsd")))
