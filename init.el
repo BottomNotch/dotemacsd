@@ -104,5 +104,9 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
+;;set font
 (set-face-attribute 'default t :font "monospace-10")
 (set-frame-font "monospace-8" nil t)
+
+;;remove tool bar
+(tool-bar-mode -1)
