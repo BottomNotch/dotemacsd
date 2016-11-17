@@ -103,3 +103,6 @@
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
+
+(set-face-attribute 'default t :font "monospace-10")
+(set-frame-font "monospace-8" nil t)
